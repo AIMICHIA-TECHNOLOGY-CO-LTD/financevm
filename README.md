@@ -1,0 +1,1 @@
+FinanceVM (FVM) is a sovereign, standard-compliant virtual machine specifically designed for the tokenisation of financial assets. It solves fundamental problems of general-purpose blockchains (like Ethereum)—such as precision errors, high costs, and a lack of financial standards—which make them unsafe for complex financial logic.
