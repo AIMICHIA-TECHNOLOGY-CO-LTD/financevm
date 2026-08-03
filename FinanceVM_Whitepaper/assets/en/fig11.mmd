@@ -1,0 +1,17 @@
+stateDiagram-v2
+    [*] --> CONFORMING: Token issued<br/>consistent with BPoS design
+    CONFORMING --> DEVIATION_DETECTED: Comparison engine detects deviation
+    DEVIATION_DETECTED --> UNDER_REVIEW: Relevant viewpoints notified
+    UNDER_REVIEW --> CONFORMING: Deviation resolved
+    UNDER_REVIEW --> DESIGN_AMENDED: Judged a gap in the design<br/>BPoS and contract version updated
+    UNDER_REVIEW --> RESTRICTED: FEK circuit breaker triggered<br/>transfers restricted
+    DESIGN_AMENDED --> CONFORMING
+    RESTRICTED --> UNDER_REVIEW
+    CONFORMING --> [*]: Maturity or full redemption
+
+    note right of DESIGN_AMENDED
+        A deviation is not necessarily an error
+        It may indicate the design did not
+        cover the case, in which case
+        BPoS should be corrected
+    end note

@@ -1,0 +1,14 @@
+flowchart TB
+    AE["ACTUS cashflow events<br/>IED IP PR MD PP TD CD"]
+    RM["Recognition rule engine<br/>Configurable and versioned"]
+    CFG["Classification configuration<br/>Jurisdiction × Framework<br/>× Asset nature × Holding purpose"]
+    VGL["Virtual General Ledger"]
+
+    AE --> RM
+    CFG --> RM
+    RM --> VGL
+    VGL --> L1["Regulatory books"]
+    VGL --> L2["Management books"]
+    VGL --> L3["Tax books"]
+    VGL --> L4["Parallel IFRS / GAAP books"]
+    VGL --> OUT["ISO 20022 auth series<br/>SCO 60 regulatory reports"]

@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant K as Kernel Layer
+    participant F as FEK
+    participant L0 as L0 身分
+    participant L1 as L1 轉讓規則
+    participant L3 as L3 生命週期
+    participant L2 as L2 電文
+    participant A as Audit
+
+    K->>F: Evaluate(狀態變更請求)
+    par 平行評估
+        F->>L0: vLEI 驗證
+        L0-->>F: ALLOW + 證據
+    and
+        F->>L1: canTransfer 檢查
+        L1-->>F: ALLOW + 證據
+    and
+        F->>L3: 現金流與斷路器檢查
+        L3-->>F: ALLOW + 證據
+    end
+    F->>L2: 組裝電文（需 L0 簽章身分）
+    L2-->>F: ALLOW + 證據
+    F->>A: 追加全部證據至雜湊鏈
+    A-->>F: 錨定雜湊
+    F-->>K: ControlDecision(ALLOW)
+    Note over K: 僅於 ALLOW 時提交狀態變更

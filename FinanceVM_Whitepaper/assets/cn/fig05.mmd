@@ -1,0 +1,11 @@
+flowchart TB
+    T["ACTUS 合約條款集<br/>已簽章 已版本化"]
+    T -->|"TermsHash + VersionID"| S["確定性現金流事件序列<br/>Canonical Schedule"]
+    S -.->|"對帳"| B1["主權節點 A"]
+    S -.->|"對帳"| B2["CSD 帳本"]
+    S -.->|"對帳"| B3["主權節點 B"]
+    S -.->|"對帳"| B4["RTGS 支付軌道"]
+    B1 -.- X1["✕ 節點之間不互相對帳"]
+    B2 -.- X1
+    B3 -.- X1
+    B4 -.- X1

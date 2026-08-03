@@ -1,0 +1,48 @@
+flowchart TB
+    subgraph SUB["中介表述層"]
+        FOM["FOM 模組<br/>FINOS CDM + ISO 4914<br/>識別碼群"]
+        BPOS["BPoS 模組<br/>ISO 21586<br/>設計意圖與控制點"]
+        ACTUS["ACTUS 模組<br/>確定性現金流"]
+    end
+
+    PREC["精度核心<br/>任意精度算術<br/>零浮點誤差"]
+
+    subgraph CTRL["控制層"]
+        FEK["FEK 模組<br/>L0 vLEI ｜ L1 轉讓規則<br/>L2 電文 ｜ L3 生命週期"]
+        VLEI["vLEI 模組<br/>ISO 17442-3"]
+        PQC["PQC 模組<br/>FIPS 203 / 204"]
+    end
+
+    subgraph DERIV["確定性導出層"]
+        ISO["ISO 20022 模組<br/>電文組裝"]
+        VGL["會計認列模組<br/>虛擬總帳"]
+        SCO["BCBS SCO 60 模組<br/>LCR / NSFR"]
+        PROV["合約溯源模組<br/>智能合約生成"]
+        ICM["內控觀測模組<br/>設計意圖一致性"]
+    end
+
+    subgraph EXEC["執行與存證"]
+        LEDGER["主權節點帳本<br/>Besu QBFT"]
+        AUDIT["稽核層<br/>雜湊鏈 + 公鏈錨定"]
+    end
+
+    PREC -.->|"支撐全部計算"| ACTUS
+    PREC -.-> SCO
+    FOM --> ACTUS
+    BPOS --> ACTUS
+    BPOS --> ICM
+    ACTUS --> ISO
+    ACTUS --> VGL
+    ACTUS --> SCO
+    ACTUS --> PROV
+    VLEI --> FEK
+    PQC --> FEK
+    PQC --> PROV
+    ACTUS --> FEK
+    ISO --> FEK
+    FEK --> LEDGER
+    PROV -->|"確定性生成"| LEDGER
+    LEDGER --> ICM
+    FEK --> AUDIT
+    VGL --> AUDIT
+    ICM --> AUDIT

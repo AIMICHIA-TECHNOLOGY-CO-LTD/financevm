@@ -1,0 +1,39 @@
+flowchart TB
+    subgraph IF["Interface Layer 介面層"]
+        IF1["REST API"]
+        IF2["Chain Gateway"]
+        IF3["節點間通訊協定"]
+    end
+    subgraph OR["Orchestration Layer 編排層"]
+        OR1["生命週期編排"]
+        OR2["時間管理"]
+        OR3["SLA 框架"]
+    end
+    subgraph FEKL["▣ FEK Module 合規控制模組"]
+        F0["L0 身分關卡"]
+        F1["L1 轉讓規則關卡"]
+        F2["L2 電文關卡"]
+        F3["L3 生命週期關卡"]
+        F4["Audit 稽核軌跡"]
+    end
+    subgraph SV["Service Layer 服務層"]
+        SV1["FSE 金融狀態引擎"]
+        SV2["SE 結算引擎"]
+        SV3["InstrumentClassifier"]
+    end
+    subgraph KN["Kernel Layer 核心層"]
+        KN1["三層狀態機"]
+        KN2["CFEP 事件匯流排"]
+        KN3["領域實體"]
+    end
+    subgraph FD["Foundation Layer 基礎層"]
+        FD1["精度核心"]
+        FD2["值物件 ISIN LEI UTI CFI UPI FISN DTI ELF"]
+    end
+
+    IF --> OR
+    OR --> SV
+    SV --> KN
+    KN -.->|"狀態變更前呼叫"| FEKL
+    KN --> FD
+    FEKL --> FD

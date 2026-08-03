@@ -1,0 +1,39 @@
+flowchart TB
+    subgraph IF["Interface Layer"]
+        IF1["REST API"]
+        IF2["Chain Gateway"]
+        IF3["Inter-Node Protocol"]
+    end
+    subgraph OR["Orchestration Layer"]
+        OR1["Lifecycle orchestration"]
+        OR2["Time management"]
+        OR3["SLA framework"]
+    end
+    subgraph FEKL["▣ FEK Module"]
+        F0["L0 Identity gate"]
+        F1["L1 Transfer-rule gate"]
+        F2["L2 Messaging gate"]
+        F3["L3 Lifecycle gate"]
+        F4["Audit trail"]
+    end
+    subgraph SV["Service Layer"]
+        SV1["FSE Financial State Engine"]
+        SV2["SE Settlement Engine"]
+        SV3["InstrumentClassifier"]
+    end
+    subgraph KN["Kernel Layer"]
+        KN1["Three-tier state machine"]
+        KN2["CFEP event bus"]
+        KN3["Domain entities"]
+    end
+    subgraph FD["Foundation Layer"]
+        FD1["Precision core"]
+        FD2["Value objects: ISIN LEI UTI CFI UPI FISN DTI ELF"]
+    end
+
+    IF --> OR
+    OR --> SV
+    SV --> KN
+    KN -.->|"Invoked before state commit"| FEKL
+    KN --> FD
+    FEKL --> FD

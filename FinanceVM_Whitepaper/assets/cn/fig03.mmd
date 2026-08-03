@@ -1,0 +1,48 @@
+classDiagram
+    class Gate {
+        <<interface>>
+        +ID() GateID
+        +Profile() ProfileID
+        +DependsOn() GateID[]
+        +Evaluate(ctx, ControlRequest) GateResult
+    }
+    class GateResult {
+        +Decision decision
+        +ReasonCode[] reasons
+        +EvidenceRef[] evidence
+    }
+    class FEK {
+        -map~GateID,Gate~ gates
+        -PolicyEngine policy
+        -AuditSink audit
+        +Register(Gate) error
+        +Evaluate(ctx, ControlRequest) ControlDecision
+    }
+    class VLEIGate {
+        Profile: vlei-keri
+    }
+    class ERC3643Gate {
+        Profile: erc3643
+    }
+    class ISO20022Gate {
+        Profile: iso20022
+    }
+    class ACTUSGate {
+        Profile: actus
+        LOCKED
+    }
+    class PolicyEngine {
+        +Evaluate(rule, context) Decision
+    }
+    class AuditSink {
+        +Append(EvidenceRef) Hash
+    }
+
+    Gate <|.. VLEIGate
+    Gate <|.. ERC3643Gate
+    Gate <|.. ISO20022Gate
+    Gate <|.. ACTUSGate
+    FEK o-- Gate
+    FEK *-- PolicyEngine
+    FEK *-- AuditSink
+    Gate ..> GateResult

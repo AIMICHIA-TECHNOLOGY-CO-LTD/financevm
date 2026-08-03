@@ -1,0 +1,38 @@
+flowchart TB
+    subgraph OFF["Sovereign node — FinanceVM"]
+        API["REST API"]
+        KER["Kernel + state machine"]
+        FEKM["FEK Module"]
+        VGLM["Recognition Module"]
+        ICMM["Conformance Module"]
+        ACT["ACTUS Module"]
+        PREC["Precision core"]
+        PG[("Database<br/>Full ML-DSA signatures<br/>Audit trail")]
+    end
+    subgraph BESU["Hyperledger Besu QBFT"]
+        SC["Generated smart contract<br/>TermsHash embedded"]
+        T["ERC-3643 token"]
+        ID["ONCHAINID"]
+    end
+    subgraph EXT["External"]
+        GLEIF["GLEIF vLEI infrastructure"]
+        CSD["CSD ledger"]
+        RTGS["RTGS payment rail"]
+        PUB["Public chain<br/>Audit anchoring only"]
+    end
+
+    API --> KER
+    KER -.->|"Pre-commit check"| FEKM
+    FEKM --> ACT
+    ACT --> PREC
+    KER --> VGLM
+    KER --> ICMM
+    KER --> PG
+    ACT -->|"Deterministic generation"| SC
+    FEKM -->|"canTransfer"| T
+    FEKM -->|"Identity verification"| GLEIF
+    T --> ID
+    T --> ICMM
+    KER -.->|"Deterministic linkage"| CSD
+    KER -.->|"Deterministic linkage"| RTGS
+    PG -.->|"Hash anchoring"| PUB

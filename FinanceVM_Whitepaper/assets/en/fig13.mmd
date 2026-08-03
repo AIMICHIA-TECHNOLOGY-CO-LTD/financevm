@@ -1,0 +1,32 @@
+classDiagram
+    class Account {
+        +AccountID id
+        +AccountType type
+        +LEI owner
+        +WalletCapability capabilities
+        +string walletAddress
+        +AccountID parentAccount
+        +Jurisdiction jurisdiction
+        +AccountStatus status
+    }
+    class AccountRole {
+        +AccountID account
+        +LEI partyLEI
+        +AccountRoleType roleType
+        +Permission[] permissions
+        +Time validFrom
+        +Time validTo
+    }
+    class OwnershipRecord {
+        +InstrumentID instrument
+        +AccountID account
+        +OwnershipLevel level
+        +Quantity quantity
+    }
+
+    Account "1" --> "*" AccountRole
+    Account "1" --> "*" OwnershipRecord
+    Account "0..1" --> "*" Account : sub-account hierarchy
+
+    note for Account "Types: Segregated Omnibus Nominee\nTrust Escrow CSD CCP Pledge"
+    note for OwnershipRecord "Levels: LegalOwner\nContractualClaimHolder\nSecurityInterestHolder\nBeneficialOwner Pledgee\nBorrower Custodian"

@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant K as Kernel Layer
+    participant F as FEK
+    participant L0 as L0 Identity
+    participant L1 as L1 Transfer rules
+    participant L3 as L3 Lifecycle
+    participant L2 as L2 Messaging
+    participant A as Audit
+
+    K->>F: Evaluate(state change request)
+    par Parallel evaluation
+        F->>L0: vLEI verification
+        L0-->>F: ALLOW + evidence
+    and
+        F->>L1: canTransfer check
+        L1-->>F: ALLOW + evidence
+    and
+        F->>L3: Cashflow and circuit-breaker check
+        L3-->>F: ALLOW + evidence
+    end
+    F->>L2: Assemble message (requires L0 signing identity)
+    L2-->>F: ALLOW + evidence
+    F->>A: Append all evidence to hash chain
+    A-->>F: Anchor hash
+    F-->>K: ControlDecision(ALLOW)
+    Note over K: State change committed only on ALLOW

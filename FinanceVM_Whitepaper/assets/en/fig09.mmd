@@ -1,0 +1,18 @@
+stateDiagram-v2
+    [*] --> DRAFT: Create new version
+    DRAFT --> EFFECTIVE: Passes FEK compliance check<br/>and is signed into force
+    DRAFT --> [*]: Draft abandoned
+    EFFECTIVE --> SUPERSEDED: New version takes effect
+    SUPERSEDED --> ARCHIVED: Retention period expires
+    ARCHIVED --> [*]
+
+    note right of EFFECTIVE
+        Exactly one version is EFFECTIVE
+        at any time
+        Change events broadcast via CFEP
+    end note
+    note right of SUPERSEDED
+        Remains queryable
+        Historical entries and trades
+        cite this version
+    end note

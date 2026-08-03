@@ -1,0 +1,10 @@
+flowchart LR
+    subgraph A["Architectural dimension: dependency"]
+        direction TB
+        A1["Interface"] --> A2["Orchestration"] --> A3["Service"] --> A4["Kernel"] --> A5["Foundation"]
+    end
+    subgraph B["Control dimension: execution order"]
+        direction LR
+        B0["L0 Identity"] --> B1["L1 Transfer rules"] --> B2["L2 Messaging"] --> B3["L3 Lifecycle"]
+    end
+    A4 -.->|"invokes"| B0

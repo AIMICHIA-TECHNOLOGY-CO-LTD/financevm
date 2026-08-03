@@ -1,0 +1,10 @@
+flowchart LR
+    subgraph A["架構維度（依賴方向）"]
+        direction TB
+        A1["Interface"] --> A2["Orchestration"] --> A3["Service"] --> A4["Kernel"] --> A5["Foundation"]
+    end
+    subgraph B["控制維度（執行順序）"]
+        direction LR
+        B0["L0 身分"] --> B1["L1 轉讓規則"] --> B2["L2 電文"] --> B3["L3 生命週期"]
+    end
+    A4 -.->|"呼叫"| B0

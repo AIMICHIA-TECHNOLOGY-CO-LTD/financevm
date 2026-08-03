@@ -1,0 +1,14 @@
+flowchart TB
+    AE["ACTUS 現金流事件<br/>IED IP PR MD PP TD CD"]
+    RM["認列規則引擎<br/>可設定 已版本化"]
+    CFG["分類設定<br/>管轄權 × 準則框架<br/>× 資產性質 × 持有目的"]
+    VGL["虛擬總帳 Virtual GL"]
+
+    AE --> RM
+    CFG --> RM
+    RM --> VGL
+    VGL --> L1["監管帳簿"]
+    VGL --> L2["管理帳簿"]
+    VGL --> L3["稅務帳簿"]
+    VGL --> L4["IFRS / GAAP 平行帳簿"]
+    VGL --> OUT["ISO 20022 auth 系列<br/>SCO 60 監理報表"]

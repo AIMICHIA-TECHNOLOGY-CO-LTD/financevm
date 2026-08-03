@@ -1,0 +1,48 @@
+flowchart TB
+    subgraph SUB["Intermediate Representation"]
+        FOM["FOM Module<br/>FINOS CDM + ISO 4914<br/>Identifier set"]
+        BPOS["BPoS Module<br/>ISO 21586<br/>Design intent and control points"]
+        ACTUS["ACTUS Module<br/>Deterministic cashflows"]
+    end
+
+    PREC["Precision Core<br/>Arbitrary-precision arithmetic<br/>No floating-point error"]
+
+    subgraph CTRL["Control"]
+        FEK["FEK Module<br/>L0 vLEI | L1 Transfer rules<br/>L2 Messaging | L3 Lifecycle"]
+        VLEI["vLEI Module<br/>ISO 17442-3"]
+        PQC["PQC Module<br/>FIPS 203 / 204"]
+    end
+
+    subgraph DERIV["Deterministic Derivation"]
+        ISO["ISO 20022 Module<br/>Message assembly"]
+        VGL["Recognition Module<br/>Virtual General Ledger"]
+        SCO["BCBS SCO 60 Module<br/>LCR / NSFR"]
+        PROV["Provenance Module<br/>Smart contract generation"]
+        ICM["Conformance Module<br/>Design-intent monitoring"]
+    end
+
+    subgraph EXEC["Execution and Attestation"]
+        LEDGER["Sovereign node ledger<br/>Besu QBFT"]
+        AUDIT["Audit layer<br/>Hash chain + public chain anchoring"]
+    end
+
+    PREC -.->|"Underpins all calculation"| ACTUS
+    PREC -.-> SCO
+    FOM --> ACTUS
+    BPOS --> ACTUS
+    BPOS --> ICM
+    ACTUS --> ISO
+    ACTUS --> VGL
+    ACTUS --> SCO
+    ACTUS --> PROV
+    VLEI --> FEK
+    PQC --> FEK
+    PQC --> PROV
+    ACTUS --> FEK
+    ISO --> FEK
+    FEK --> LEDGER
+    PROV -->|"Deterministic generation"| LEDGER
+    LEDGER --> ICM
+    FEK --> AUDIT
+    VGL --> AUDIT
+    ICM --> AUDIT

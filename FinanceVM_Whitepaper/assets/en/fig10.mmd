@@ -1,0 +1,16 @@
+flowchart TB
+    BPOS["BPoS design intent<br/>Control baseline"]
+    OBS["Observed actual state<br/>Ledger + ACTUS + FEK audit"]
+    CMP["Conformance comparison engine"]
+
+    BPOS --> CMP
+    OBS --> CMP
+    CMP --> DEV["Deviation event<br/>Risk outside the design envelope"]
+
+    CMP --> V1["Issuer<br/>Amount in circulation, holder structure<br/>Discharge of lifecycle obligations"]
+    CMP --> V2["Underwriter<br/>Placement progress, eligibility<br/>Limit utilisation"]
+    CMP --> V3["Participant<br/>Positions, delivery obligations<br/>Collateral status"]
+    CMP --> V4["Counterparty<br/>Counterparty exposure, settlement finality"]
+    CMP --> V5["Regulator<br/>Concentration, eligibility breaches<br/>Systemic exposure"]
+    CMP --> V6["Third-party service provider<br/>Custody balances, audit trail<br/>Valuation basis"]
+    CMP --> V7["Investor<br/>Rights, cashflow schedule<br/>Restrictions"]

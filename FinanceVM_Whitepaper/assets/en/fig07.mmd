@@ -1,0 +1,40 @@
+classDiagram
+    class RecognitionRuleSet {
+        +RuleSetID id
+        +Jurisdiction jurisdiction
+        +FrameworkID framework
+        +SemanticVersion version
+        +Date effectiveFrom
+        +Date effectiveTo
+        +Signature authorSignature
+    }
+    class ClassificationRule {
+        +AssetNature assetNature
+        +HoldingPurpose purpose
+        +AccountCategory result
+        +MeasurementBasis measurement
+    }
+    class EventMapping {
+        +ACTUSEventType eventType
+        +JournalTemplate template
+    }
+    class JournalTemplate {
+        +DebitAccount[] debits
+        +CreditAccount[] credits
+        +AmountExpression expression
+    }
+    class JournalEntry {
+        +EntryID id
+        +ContractID contract
+        +ACTUSEventRef sourceEvent
+        +RuleSetID appliedRuleSet
+        +Date recognitionDate
+        +Money[] lines
+        +EvidenceRef auditRef
+    }
+
+    RecognitionRuleSet *-- ClassificationRule
+    RecognitionRuleSet *-- EventMapping
+    EventMapping --> JournalTemplate
+    JournalTemplate ..> JournalEntry : produces
+    JournalEntry --> RecognitionRuleSet : cites applicable version

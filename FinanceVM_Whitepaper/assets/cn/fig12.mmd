@@ -1,0 +1,38 @@
+flowchart TB
+    subgraph OFF["主權節點 — FinanceVM"]
+        API["REST API"]
+        KER["Kernel + 狀態機"]
+        FEKM["FEK 模組"]
+        VGLM["會計認列模組"]
+        ICMM["內控觀測模組"]
+        ACT["ACTUS 模組"]
+        PREC["精度核心"]
+        PG[("資料庫<br/>ML-DSA 全簽章<br/>稽核軌跡")]
+    end
+    subgraph BESU["Hyperledger Besu QBFT"]
+        SC["生成之智能合約<br/>內嵌 TermsHash"]
+        T["ERC-3643 代幣"]
+        ID["ONCHAINID"]
+    end
+    subgraph EXT["外部"]
+        GLEIF["GLEIF vLEI 基礎設施"]
+        CSD["CSD 帳本"]
+        RTGS["RTGS 支付軌道"]
+        PUB["公鏈<br/>僅供稽核錨定"]
+    end
+
+    API --> KER
+    KER -.->|"變更前檢查"| FEKM
+    FEKM --> ACT
+    ACT --> PREC
+    KER --> VGLM
+    KER --> ICMM
+    KER --> PG
+    ACT -->|"確定性生成"| SC
+    FEKM -->|"canTransfer"| T
+    FEKM -->|"身分驗證"| GLEIF
+    T --> ID
+    T --> ICMM
+    KER -.->|"確定性連結"| CSD
+    KER -.->|"確定性連結"| RTGS
+    PG -.->|"雜湊錨定"| PUB

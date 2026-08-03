@@ -1,0 +1,16 @@
+stateDiagram-v2
+    [*] --> DRAFT: 建立新版本
+    DRAFT --> EFFECTIVE: 通過 FEK 合規檢查<br/>並簽章生效
+    DRAFT --> [*]: 廢棄草稿
+    EFFECTIVE --> SUPERSEDED: 新版本生效
+    SUPERSEDED --> ARCHIVED: 保存期屆滿
+    ARCHIVED --> [*]
+
+    note right of EFFECTIVE
+        同時僅一個版本為 EFFECTIVE
+        變更事件經 CFEP 廣播
+    end note
+    note right of SUPERSEDED
+        仍可查詢
+        歷史分錄與交易引用此版本
+    end note

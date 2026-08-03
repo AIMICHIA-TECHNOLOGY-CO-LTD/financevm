@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant LC as Legal contract terms
+    participant AT as ACTUS term set
+    participant SG as Signing service<br/>vLEI + ML-DSA-65
+    participant GEN as ACTUS contract generator
+    participant CH as On-chain contract
+    participant V as Third-party verifier<br/>Regulator, auditor
+
+    LC->>AT: Structured into ACTUS parameters
+    AT->>SG: Submit term set
+    SG->>SG: Compute TermsHash SHA-256
+    SG->>SG: vLEI identity signature + ML-DSA signature
+    Note over SG: Full signature stored off-chain<br/>Only the hash is stored on-chain
+    SG->>GEN: Signed term set + VersionID
+    GEN->>GEN: Deterministic generation
+    Note over GEN: Same terms + same target chain<br/>+ same generator version<br/>= byte-identical output
+    GEN->>CH: Deploy with TermsHash and VersionID embedded
+    V->>CH: Read TermsHash
+    V->>GEN: Regenerate from the same terms
+    V->>V: Compare bytecode
+    Note over V: On-chain logic independently verified<br/>as originating from that signed version

@@ -1,0 +1,16 @@
+stateDiagram-v2
+    [*] --> CONFORMING: 代幣發行<br/>符合 BPoS 設計
+    CONFORMING --> DEVIATION_DETECTED: 比對引擎偵測偏離
+    DEVIATION_DETECTED --> UNDER_REVIEW: 通知相關視角
+    UNDER_REVIEW --> CONFORMING: 偏離解除
+    UNDER_REVIEW --> DESIGN_AMENDED: 認定為設計缺漏<br/>更新 BPoS 與合約版本
+    UNDER_REVIEW --> RESTRICTED: 觸發 FEK 斷路器<br/>限制轉讓
+    DESIGN_AMENDED --> CONFORMING
+    RESTRICTED --> UNDER_REVIEW
+    CONFORMING --> [*]: 到期或全數贖回
+
+    note right of DESIGN_AMENDED
+        偏離不必然是錯誤
+        亦可能是設計未涵蓋
+        此時應修正 BPoS
+    end note

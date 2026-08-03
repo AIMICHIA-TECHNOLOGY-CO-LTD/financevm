@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant LC as 法律合約條款
+    participant AT as ACTUS 條款集
+    participant SG as 簽章服務<br/>vLEI + ML-DSA-65
+    participant GEN as ACTUS 合約生成器
+    participant CH as 鏈上合約
+    participant V as 第三方驗證者<br/>監理機關 審計師
+
+    LC->>AT: 結構化為 ACTUS 參數
+    AT->>SG: 提交條款集
+    SG->>SG: 計算 TermsHash SHA-256
+    SG->>SG: vLEI 身分簽章 + ML-DSA 簽章
+    Note over SG: 全簽章存資料庫<br/>鏈上僅存雜湊
+    SG->>GEN: 已簽章條款集 + VersionID
+    GEN->>GEN: 確定性生成
+    Note over GEN: 相同條款 + 相同目標鏈<br/>+ 相同生成器版本<br/>→ 位元組層級相同輸出
+    GEN->>CH: 部署，內嵌 TermsHash 與 VersionID
+    V->>CH: 讀取 TermsHash
+    V->>GEN: 以相同條款重新生成
+    V->>V: 比對位元組碼
+    Note over V: 可獨立驗證鏈上邏輯<br/>源自該簽章條款版本

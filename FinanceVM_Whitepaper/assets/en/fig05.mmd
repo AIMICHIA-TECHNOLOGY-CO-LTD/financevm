@@ -1,0 +1,11 @@
+flowchart TB
+    T["ACTUS term set<br/>Signed and versioned"]
+    T -->|"TermsHash + VersionID"| S["Deterministic cashflow event sequence<br/>Canonical Schedule"]
+    S -.->|"Reconcile"| B1["Sovereign node A"]
+    S -.->|"Reconcile"| B2["CSD ledger"]
+    S -.->|"Reconcile"| B3["Sovereign node B"]
+    S -.->|"Reconcile"| B4["RTGS payment rail"]
+    B1 -.- X1["✕ Nodes do not reconcile against each other"]
+    B2 -.- X1
+    B3 -.- X1
+    B4 -.- X1
