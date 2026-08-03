@@ -4,7 +4,7 @@
 
 *The Contract as Single Source of Truth: Execution, Recognition, Supervision*
 
-[繁體中文](README.zh-TW.md) ｜ [financevm.io](https://financevm.io/) ｜ [AIMICHIA TECHNOLOGY](https://aimichia.com/)
+[繁體中文](README.zh-TW.md) ｜ [FinanceVM](https://financevm.io/) ｜ [AIMICHIA](https://aimichia.com/)
 
 ---
 
