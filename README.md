@@ -26,8 +26,8 @@ Each institution runs its own sovereign node. Nodes do not share global state; t
 
 | Document | Language | Link |
 |---|---|---|
-| **Whitepaper v2.0** | English | [FinanceVM_Whitepaper_v2.0_EN_github.md](FinanceVM_Whitepaper/FinanceVM_Whitepaper_v2.0_EN.md) |
-| **白皮書 v2.0** | 繁體中文 | [FinanceVM_Whitepaper_v2.0_CN_github.md](FinanceVM_Whitepaper/FinanceVM_Whitepaper_v2.0_CN.md) |
+| **Whitepaper v2.0** | English | [FinanceVM_Whitepaper_v2.0_EN.md](FinanceVM_Whitepaper/FinanceVM_Whitepaper_v2.0_EN.md) |
+| **白皮書 v2.0** | 繁體中文 | [FinanceVM_Whitepaper_v2.0_CN.md](FinanceVM_Whitepaper/FinanceVM_Whitepaper_v2.0_CN.md) |
 | Whitepaper v1.0 (archived) | English | [Google Drive](https://drive.google.com/file/d/1eVgSnquUofaIPQvQTAC-T1TmubrfqZ7c/view) |
 
 Appendix B of v2.0 lists what changed from v1.0 and what did not.
