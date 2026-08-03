@@ -4,7 +4,7 @@
 
 *合約即真相——可執行、可認列、可監理*
 
-[English](README.md) ｜ [financevm.io](https://financevm.io/) ｜ [艾米佳科技](https://aimichia.com/)
+[English](README.md) ｜ [FinanceVM](https://financevm.io/) ｜ [艾米佳科技](https://aimichia.com/)
 
 ---
 
