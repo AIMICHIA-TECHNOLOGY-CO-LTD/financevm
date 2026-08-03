@@ -26,8 +26,8 @@ FinanceVM 是專為金融資產代幣化而建的主權標準合規虛擬機。�
 
 | 文件 | 語言 | 連結 |
 |---|---|---|
-| **白皮書 v2.0** | 繁體中文 | [FinanceVM_Whitepaper_v2.0_CN_github.md](FinanceVM_Whitepaper/FinanceVM_Whitepaper_v2.0_CN.md) |
-| **Whitepaper v2.0** | English | [FinanceVM_Whitepaper_v2.0_EN_github.md](FinanceVM_Whitepaper/FinanceVM_Whitepaper_v2.0_EN.md) |
+| **白皮書 v2.0** | 繁體中文 | [FinanceVM_Whitepaper_v2.0_CN.md](FinanceVM_Whitepaper/FinanceVM_Whitepaper_v2.0_CN.md) |
+| **Whitepaper v2.0** | English | [FinanceVM_Whitepaper_v2.0_EN.md](FinanceVM_Whitepaper/FinanceVM_Whitepaper_v2.0_EN.md) |
 | 白皮書 v1.0（存檔） | English | [Google Drive](https://drive.google.com/file/d/1eVgSnquUofaIPQvQTAC-T1TmubrfqZ7c/view) |
 
 v2.0 附錄 B 逐項列出相對於 v1.0 有哪些變更、哪些維持不變。
