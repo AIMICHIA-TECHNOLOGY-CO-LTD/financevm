@@ -9,7 +9,7 @@
 
 **Website**: https://financevm.io/
 
-**Email**: contact@financevm.io ｜ jim.lin@aimichia.com
+**Email**: AIMICHIA@proton.me ｜ jim.lin@aimichia.com
 
 ---
 
