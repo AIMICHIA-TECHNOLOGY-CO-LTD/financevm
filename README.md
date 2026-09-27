@@ -99,7 +99,7 @@ Cross-ledger atomic settlement is deliberately deferred pending clearer regulato
 
 - Website: https://financevm.io/
 - Company: https://aimichia.com/
-- Email: contact@financevm.io ｜ jim.lin@aimichia.com
+- Email: AIMICHIA@proton.me ｜ jim.lin@aimichia.com
 
 Enquiries from regulators, financial market infrastructures and standards bodies are welcome.
 
