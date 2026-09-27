@@ -99,7 +99,7 @@ FinanceVM 目前並行兩條軌道，評估本專案時此區分至為重要。
 
 - 官方網站：https://financevm.io/
 - 公司網站：https://aimichia.com/
-- 電子郵件：contact@financevm.io ｜ jim.lin@aimichia.com
+- 電子郵件：AIMICHIA@proton.me ｜ jim.lin@aimichia.com
 
 歡迎監理機關、金融市場基礎設施機構與標準制定組織來信洽詢。
 
